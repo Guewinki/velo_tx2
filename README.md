@@ -22,5 +22,8 @@ git update-index --assume-unchanged path/to/file
 When you want to start keeping track again
 git update-index --no-assume-unchanged path/to/file
 
-to add dir created on local machine use
-git add {dirname}
+to add file/dir created on local machine use
+git add {file/dirname}
+
+to remove on local machine
+git rm {name}
