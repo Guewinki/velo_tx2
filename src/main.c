@@ -1,7 +1,7 @@
 /*
 velo tx2
 via SPI and NRF24L01
-nrf,mydelay included in stm8l15x_conf.h
+
 prepare
 */
 //Includes ------------------------------------------------------------------*/
@@ -263,26 +263,25 @@ void main(void){
 	//TIM1->CR1|=TIM1_CR1_CEN;  //enable TMR1
 	enableInterrupts();
   while(1){
-    if((fl&PRESSED)==PRESSED){
+    if((fl&PRESSED)==PRESSED){		//just pressed
 			mode_armed();
-      GPIO_HIGH(LED1_PORT,LED1_PIN);
       fl&=~PRESSED;
       RX_mode();
+			GPIO_HIGH(LED1_PORT,LED1_PIN);
 		}
-		if((fl&MDLPRESSED)==MDLPRESSED){
-			mode_disarmed();
-      GPIO_HIGH(LED2_PORT,LED2_PIN);
+		if((fl&MDLPRESSED)==MDLPRESSED){		//mdl pressed
+			mode_test();
       fl&=~MDLPRESSED;
       RX_mode();
+			GPIO_HIGH(LED2_PORT,LED2_PIN);
 		}
-		if((fl&LONGPRESSED)==LONGPRESSED){
-			mode_test();
-      RX_mode();
+		if((fl&LONGPRESSED)==LONGPRESSED){		//long pressed
+			mode_disarmed();
       fl&=~LONGPRESSED;
+			RX_mode();
+			GPIO_LOW(LED1_PORT,LED1_PIN);
 		}
 		mydelay_ms(100);
-    GPIO_LOW(LED1_PORT,LED1_PIN);
-    GPIO_LOW(LED2_PORT,LED2_PIN);
 	}
 }
 //----------------------------------------------------------------

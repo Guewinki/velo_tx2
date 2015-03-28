@@ -53,8 +53,7 @@
 /* #include "stm8l15x_wfe.h" */
 /* #include "stm8l15x_wwdg.h" */
 //my includes
-//#include "mydelay.h"	//delay,holds all the programm
-//#include "nrf24l01p.h"  //NRF24L01 library
+//its useless
 
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
